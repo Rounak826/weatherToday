@@ -5,7 +5,7 @@ async function fetchData(pos)
 {
     let cityWeather = await getName(pos);
     
-    let url = 'http://api.openweathermap.org/data/2.5/weather?q='+cityWeather+'&appid=bc30d08247c266b44037f2c19cb4172c';
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q='+cityWeather+'&appid=bc30d08247c266b44037f2c19cb4172c';
     try
     {let res = await fetch(url);
     
@@ -31,7 +31,7 @@ async function fetchDataName(name)
 {
     let cityWeather = name;
     
-    let url = 'http://api.openweathermap.org/data/2.5/weather?q='+cityWeather+'&appid=bc30d08247c266b44037f2c19cb4172c';
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q='+cityWeather+'&appid=bc30d08247c266b44037f2c19cb4172c';
     try
     {let res = await fetch(url);
     
