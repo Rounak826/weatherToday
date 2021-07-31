@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }  
+        body{
+            background-color: #99d8ef;
+        }
+        nav{
+            position: fixed;
+            background-color: #4f5d73;
+            width: 100%;
+            height: 100px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 15px;
+            padding-right: 15px;
+            box-shadow: 5px 5px 400px 2px white;
+            margin-bottom: 20px;
+            z-index: 99;
+        }
+        nav .logo
+        {
+            width: 10%;
+            padding: 5px;
+            display: inline-flex;
+            align-items: center;
+            
+        }
+        nav .logo img
+        {
+            height: 95px;
+        }
+        nav .logo h2{
+            color: azure;
+        }
+        nav .location h3{
+            padding-left:120px; 
+            color: azure;
+            font-family: sans-serif;
+        }
+        nav .menu input{
+            border-radius: 5px;
+            border-style: solid;
+            border-color: slategray;
+            border-width: 2px;
+            height: 35px;
+            text-align: center;
+        }
+        nav .menu button{
+            border-radius: 5px;
+            border-style: solid;
+            border-color: slategray;
+            border-width: 2px;
+            padding-left: 5px;
+            padding-right:5px; 
+            height: 35px;
+            background-color: skyblue;
+            color: aliceblue;
+            font-size: 28;
+            font-weight: 600;
+            
+            
+            
+        }
+        
+        .main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 150px;
+        }
+        .main .container{
+            width: 60%;
+            height: 500px;
+            background-blend-mode: overlay;
+            box-shadow: 5px 5px 100px 2px white;
+            border-radius: 10px;
+            background:inherit;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            
+        }
+        .main .container::before{
+            opacity:0.5;
+            filter: blur(5px;)
+        }
+        .main .container .weatherIcon{
+            width: 40%;  
+            z-index: 99;
+        }
+        .main .container .weatherIcon iframe{
+            width: 100%;
+        }
+        
+        .main .container .weatherIcon h4{
+            text-align: center;
+            color: darkslategray;
+        }
+        .main .container .weatherInfo{
+            width: 60%;
+            display: flex;
+            flex-flow: column;
+            align-content: center;
+            justify-content: space-around;
+        }
+        
+        .main .container .weatherInfo .header{
+            display: flex;
+            align-items: center;
+            justify-content:space-around;
+            
+        }
+        .main .container .weatherInfo .header h1{
+            padding-bottom: 20px;
+            color: darkslategray;
+        }
+        .main .container .weatherInfo .header .temprature{
+            display: flex;
+            align-content:flex-start;
+            justify-content:space-around;
+            margin-bottom: 15px;
+        }
+        .main .container .weatherInfo .header .temprature .icon{
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 10px;
+        }
+        .main .container .weatherInfo .header .temprature .icon img{
+            height:70%;
+            filter: invert(26%) sepia(10%) saturate(1614%) hue-rotate(131deg) brightness(91%) contrast(85%);
+        }
+        .main .container .weatherInfo .header .temprature .info{
+            float: left;
+        }
+        .main .container .weatherInfo .header .temprature .info h3{
+            font-size: 3em;
+            color: darkslategray;
+        }
+        .main .container .weatherInfo .windInfo{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 50%;
+            margin-bottom: 15px;
+        }
+        .main .container .weatherInfo .windInfo .speed{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .main .container .weatherInfo .windInfo .speed h5{
+            font-size: 2em;
+            color: darkslategray;
+        }
+        .main .container .weatherInfo .windInfo .icon img{
+            filter: invert(26%) sepia(10%) saturate(1614%) hue-rotate(131deg) brightness(91%) contrast(85%);
+            padding-bottom: 5px;
+        }
+        .main .container .weatherInfo .windInfo .direction{
+            height: 100%;
+            padding-bottom: 10px;
+        }
+        .main .container .weatherInfo .windInfo .direction img{ 
+            height: 40px;
+            filter: invert(26%) sepia(10%) saturate(1614%) hue-rotate(131deg) brightness(91%) contrast(85%);
+        }
+        .main .container .weatherInfo .otherInfo{
+            display: flex;
+            align-content: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-left: 0px;
+            margin-bottom: 15px;
+        }
+        .main .container .weatherInfo .otherInfo .title h5{
+            font-size: 15px;
+            color: darkslategray;
+        }
+        
+        .main .container .weatherInfo .sun{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 30%;
+            
+        }
+        .main .container .weatherInfo .sun .sunRise img{
+            filter: invert(26%) sepia(10%) saturate(1614%) hue-rotate(131deg) brightness(91%) contrast(85%);
+        }
+        .main .container .weatherInfo .sun .sunSet img{
+            filter: invert(26%) sepia(10%) saturate(1614%) hue-rotate(131deg) brightness(91%) contrast(85%);
+        }
+    </style>
+    <title>Wheather Today</title>
+       
+  </head>
+  <body>
+      <nav>
+          <div class="logo">
+            <img src="svg/Circle-icons-weather.svg">
+              <h2>Weather Today</h2>  
+          </div>
+          
+          <div class="location"><h3 id="locationd">Location</h3></div>
+          <div class="menu">
+              <input id="searchInput" type="text" placeholder="Enter City">
+              <button id="searchBtn" type="submit">Search</button>
+          </div>
+      </nav>
+      <div class="main">
+        <div class="container">
+            <div class="weatherIcon">
+                <iframe id ="weatherIcon" src="svg/b_1_partly_cloudy.svg"></iframe>
+                <h4 id="wDescr">Partly Cloudy</h4>
+            </div>
+            <div class="weatherInfo">
+                
+                <div class="header">
+                    <div class="temprature">
+                    
+                    <div class="icon">
+                      <img src="svg/thermometer.svg">
+                    </div>
+                    
+                    <div class="info">
+                        <h3 id="temprature">--<span>&#176;</span>C</h3>
+                        <p id="feelT">feels like --<span>&#176;</span>C</p>
+                    </div>
+                        
+                    
+                </div>
+                <div class="city">
+                        <h1 id="city">Location</h1>
+                </div>
+                
+                
+                </div>
+                
+                
+                <div class="windInfo">
+                    <div class="icon">
+                        <img src="svg/wind.svg">
+                        <h5>Wind</h5>
+                    </div>
+                    <div class="speed">
+                        <h5 id="wSpeed">--</h5><p>km/hr</p>    
+                    </div>
+                    
+                    <div class="direction">
+                        <img id="direction" src="svg/arrow-up.svg">
+                    </div>
+                </div>
+                
+                <div class="otherInfo">
+                    <div class="rain">
+                        <div class="value">
+                            <h4 id="rain">--</h4>
+                        </div>
+                        <div class="title">
+                            <h5>Rain</h5>
+                        </div>    
+                    </div>
+                    <div class="humidity">
+                        <div class="value">
+                            <h4 id="humidity">--%</h4>
+                        </div>
+                        <div class="title">
+                            <h5>Humidity</h5>
+                        </div>    
+                    </div>
+                    <div class="pressure">
+                        <div class="value">
+                            <h4 id="pressure">-- hPa</h4>
+                        </div>
+                        <div class="title">
+                            <h5>pressure</h5>
+                        </div>
+                    </div>
+                    <div class="visibility">
+                        <div class="value">
+                            <h4 id="visibility">--m</h4>
+                        </div>
+                        <div class="title">
+                            <h5>Visibility</h5>
+                        </div>
+                    </div>
+                
+               
+            
+            </div>
+             <div class="sun">
+                    <div class="sunRise">
+                        <img src="svg/sunrise.svg">
+                        <h5 id="sunrise">--</h5>
+                    </div>
+                    <div class="sunSet">
+                        <img src="svg/sunset.svg">
+                        <h5 id="sunset">--</h5>
+                    </div>
+                </div>    
+        </div>
+      
+      </div>
+      
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+      
+      <script src="scripts/location.js"></script>
+      <script src="scripts/weather_api.js"></script>
+      <script src="scripts/display.js"></script>      
+      <script>
+      /* humidity
+       pressure
+       rain 1h
+       visibility
+       wind */
+      
+      </script>
+  </body>
+</html>
