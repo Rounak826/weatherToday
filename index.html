@@ -8,8 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style type="text/css">
-        /* Extra large devices (large laptops and desktops, 1200px and up) */
-        @media only screen and (min-width: 1200px) {}
+        
 
         *{
             margin: 0;
@@ -52,13 +51,27 @@
             color: azure;
             font-family: sans-serif;
         }
-        nav .menu input{
-            border-radius   : 5px;
+        nav .menu{
+            display: inline-flex;
+            align-content: center;
+            justify-content: space-around;
+        }
+        nav .menu .input{
+            display: inline-block;
+            position: relative;
+        }
+       
+        nav .menu .input input::-webkit-calendar-picker-indicator {
+          display: none;
+        }
+        nav .menu .input input{
+            border-radius : 5px;
             border-style: solid;
             border-color: slategray;
             border-width: 2px;
             height: 35px;
             text-align: center;
+            width: 100%;
         }
         nav .menu button{
             border-radius: 5px;
@@ -72,7 +85,7 @@
             color: aliceblue;
             font-size: 28;
             font-weight: 600;
-            
+            margin-left: 10px;
             
             
         }
@@ -338,7 +351,6 @@
             
         }
 
-        /* Small devices (portrait tablets and large phones, 600px and up) */
         @media only screen and (max-width: 768px) and (min-width:470px) {
             nav {
                 height: 80px;
@@ -473,8 +485,15 @@
           
           <div class="location"><h3 id="locationd">Location</h3></div>
           <div class="menu">
-              <input id="searchInput" type="text" placeholder="Enter City">
-              <button id="searchBtn" type="submit"><span class="icon"><img src="svg/search.svg"></span c><span class="text">Search</span></button>
+              <div class="input">
+                
+                  <input autocomplete="off" name="city_name" id="searchInput" list="cityList"type="text" placeholder="Enter City">
+                  <datalist id="cityList">
+
+                  </datalist>
+                  <div class="auto"></div>
+              </div>
+               <button id="searchBtn" type="submit"><span class="icon"><img src="svg/search.svg"></span c><span class="text">Search</span></button>
           </div>
       </nav>
       <div class="main">
@@ -567,7 +586,7 @@
                         <img src="svg/sunset.svg">
                         <h5 id="sunset">--</h5>
                     </div>
-                </div>    
+            </div>    
         </div>
       
       </div>
@@ -587,13 +606,6 @@
       <script src="scripts/location%20v2.js"></script>
       <script src="scripts/weather_api.js"></script>
       <script src="scripts/display.js"></script>      
-      <script>
-      /* humidity
-       pressure
-       rain 1h
-       visibility
-       wind */
-      
-      </script>
+      <script src="scripts/autocomplete.js"></script>
   </body>
 </html>
